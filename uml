@@ -1,0 +1,40 @@
+@startuml
+
+package "Trade Surveillance System" {
+
+    class "Blockchain Network" {
+        - networkNodes: string[]
+        - currentBlockHeight: int
+        + deploySmartContract(contractName: string, contractCode: string): bool
+        + submitTransaction(from: string, to: string, amount: float): bool
+        + verifyTransaction(transactionId: string): bool
+    }
+
+    class "Smart Contracts" {
+        + executeRules()
+    }
+
+    class "Data Ingestion" {
+        + ingestData()
+    }
+
+    class "Analytics Engine" {
+        + analyzeData()
+    }
+
+    class "Alert Management" {
+        + generateAlerts()
+    }
+
+    class "User Interface" {
+        + displayData()
+    }
+
+    "Blockchain Network" -- "Smart Contracts"
+    "Blockchain Network" -- "Data Ingestion"
+    "Blockchain Network" -- "Analytics Engine"
+    "Blockchain Network" -- "Alert Management"
+    "Blockchain Network" -- "User Interface"
+}
+
+@enduml
